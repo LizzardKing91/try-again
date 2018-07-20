@@ -1,0 +1,22 @@
+<div class="col-md-6">
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Model</th>
+    <th>Number</th>
+    <th>Point</th>
+    <th>Available</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let car of cars">
+    <td>{{car.id}}</td>
+    <td>{{car.name}}</td>
+    <td>{{car.number}}</td>
+    <td>{{car.currentPoint}}</td>
+    <td>{{car.available | isAvailable}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
