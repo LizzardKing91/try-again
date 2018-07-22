@@ -7,19 +7,23 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { MatTableModule } from '@angular/material';
 import { IsAvailablePipe } from './cars/isAvailable.pipe';
+import { AddCarComponent } from './add-car/add-car.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
-    IsAvailablePipe
+    IsAvailablePipe,
+    AddCarComponent
   ],
   imports: [
     BrowserModule,
     MatToolbarModule,
     FormsModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

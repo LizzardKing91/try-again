@@ -21,4 +21,17 @@ export class CarService {
     const url = `${this.carsUrl}/list`;
     return this.http.get<Car[]>(url).pipe();
   }
+
+  getCar(id: number): Observable<Car> {
+    const url = `${this.carsUrl}/${id}`;
+    return this.http.get<Car>(url).pipe();
+  }
+
+  updateCar(car: Car): Observable<any> {
+    return this.http.put(this.carsUrl, car, httpOptions).pipe();
+  }
+  addCar(car: Car): Observable<any> {
+    return this.http.post<Car>(`${this.carsUrl}/add`, car, httpOptions).pipe();
+  }
 }
+
