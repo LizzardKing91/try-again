@@ -2,22 +2,39 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th>Id</th>
     <th>Model</th>
     <th>Number</th>
     <th>Point</th>
     <th>Available</th>
+    <th>Details</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let car of cars">
-    <td>{{car.id}}</td>
     <td>{{car.name}}</td>
     <td>{{car.number}}</td>
     <td>{{car.currentPoint}}</td>
     <td>{{car.available | isAvailable}}</td>
+    <td><a routerLink="http://localhost:8080/cars/{{car.id}}"><button class="btn btn-success pull-right" >Car details </button></a></td>
   </tr>
   </tbody>
 </table>
-  <app-add-car></app-add-car>
+  <h2>My Heroes</h2>
+
+  <div>
+    <label>Hero name:
+      <input #carName />
+    </label>
+    <label>Hero name:
+      <input #carNumber />
+    </label>
+    <label>Hero name:
+      <input #carPoint />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(carName.value, carNumber.value, carPoint.value, true); carName.value=''; carNumber.value=''; carPoint.value=''">
+      add
+    </button>
+  </div>
+
 </div>

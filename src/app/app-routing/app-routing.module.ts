@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CarsComponent } from '../cars/cars.component';
-import  { AddCarComponent } from '../add-car/add-car.component';
+import { CarDetailsComponent } from '../car-details/car-details.component';
 
 const routes: Routes = [
   {path: 'cars', component: CarsComponent},
-  {path: 'car/:id', component: AddCarComponent}
+  {path: 'cars', component: CarDetailsComponent}
 ];
 
 @NgModule({
