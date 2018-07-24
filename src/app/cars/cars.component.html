@@ -1,4 +1,18 @@
 <div class="col-md-6">
+  <h3>Add new car: </h3>
+  <div class="container row">
+    <ul>
+      <li>Car model:</li>
+      <input class="input-group-text" #carName /> <br>
+      <li>Car number:</li>
+      <input class="input-group-text" #carNumber /> <br>
+      <li>Current point:</li>
+      <input class="input-group-text" #carPoint /> <br>
+      <button class="btn btn-info" (click)="add(carName.value, carNumber.value, carPoint.value, true); carName.value=''; carNumber.value=''; carPoint.value=''">
+        add
+      </button>
+    </ul>
+  </div>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -15,26 +29,8 @@
     <td>{{car.number}}</td>
     <td>{{car.currentPoint}}</td>
     <td>{{car.available | isAvailable}}</td>
-    <td><a routerLink="http://localhost:8080/cars/{{car.id}}"><button class="btn btn-success pull-right" >Car details </button></a></td>
+    <td><a routerLink="/cars/{{car.id}}"><button class="btn btn-success pull-right" >Car details </button></a></td>
   </tr>
   </tbody>
 </table>
-  <h2>My Heroes</h2>
-
-  <div>
-    <label>Hero name:
-      <input #carName />
-    </label>
-    <label>Hero name:
-      <input #carNumber />
-    </label>
-    <label>Hero name:
-      <input #carPoint />
-    </label>
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(carName.value, carNumber.value, carPoint.value, true); carName.value=''; carNumber.value=''; carPoint.value=''">
-      add
-    </button>
-  </div>
-
 </div>

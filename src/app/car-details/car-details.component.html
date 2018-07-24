@@ -1,11 +1,57 @@
-<div *ngIf="car">
+<div class="container" *ngIf="car">
   <h2>{{car.name | uppercase}} Details</h2>
   <div><span>id: </span>{{car.id}}</div>
   <div>
-    <label>name:
-      <input [(ngModel)]="car.name" placeholder="name"/>
-    </label>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Model</th>
+        <th>Number</th>
+        <th>Point</th>
+        <th>Available</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><input [(ngModel)]="car.name" placeholder="name"/></td>
+        <td><input [(ngModel)]="car.number" placeholder="name"/></td>
+        <td><input [(ngModel)]="car.currentPoint" placeholder="name"/></td>
+        <td>{{car.available | isAvailable}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <div *ngIf="car.historyList.length > 0">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Renter Name</th>
+        <th>Start Point</th>
+        <th>Start Time</th>
+        <th>Final Point</th>
+        <th>Final Time</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let history of car.historyList">
+        <td>{{history.renterName}}</td>
+        <td>{{history.startPoint}}</td>
+        <td>{{history.startDate | date: 'dd MMM yyyy, HH:mm'}}</td>
+        <td>{{history.finalPoint}}</td>
+        <td>{{history.finalDate | date: 'dd MMM yyyy, HH:mm'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="container row">
+    <div class="row" style="padding-right: 10%; padding-left: 3%">
+      <button class="btn btn-info" (click)="goBack()">Go back</button>
+    </div>
+    <div class="row" style="padding-right: 10%">
+      <button class="btn btn-success" (click)="save()">Edit</button> <br>
+    </div>
+    <div class="row" style="padding-right: 10%">
+      <button class="btn btn-danger" (click)="delete()">Delete</button> <br>
+    </div>
+  </div>
 </div>

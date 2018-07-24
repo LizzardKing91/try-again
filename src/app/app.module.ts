@@ -5,17 +5,19 @@ import { AppComponent } from './app.component';
 import { CarsComponent } from './cars/cars.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatButtonModule } from '@angular/material';
 import { IsAvailablePipe } from './cars/isAvailable.pipe';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CarDetailsComponent } from './car-details/car-details.component';
+import { CarRentComponent } from './car-rent/car-rent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
     IsAvailablePipe,
-    CarDetailsComponent
+    CarDetailsComponent,
+    CarRentComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { CarDetailsComponent } from './car-details/car-details.component';
     FormsModule,
     HttpClientModule,
     MatTableModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
