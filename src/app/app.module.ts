@@ -9,7 +9,8 @@ import { MatTableModule, MatButtonModule } from '@angular/material';
 import { IsAvailablePipe } from './cars/isAvailable.pipe';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CarDetailsComponent } from './car-details/car-details.component';
-import { CarRentComponent } from './car-rent/car-rent.component';
+import { RentPointsComponent } from './rent-points/rent-points.component';
+import { RentPointDetailsComponent } from './rent-point-details/rent-point-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CarRentComponent } from './car-rent/car-rent.component';
     CarsComponent,
     IsAvailablePipe,
     CarDetailsComponent,
-    CarRentComponent
+    RentPointsComponent,
+    RentPointDetailsComponent
   ],
   imports: [
     BrowserModule,

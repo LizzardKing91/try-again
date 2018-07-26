@@ -1,0 +1,29 @@
+<div class="col-md-6">
+  <h3>Add new point: </h3>
+  <div class="container row">
+    <ul>
+      <li>Address:</li>
+      <input class="input-group-text" #address /> <br>
+      <button class="btn btn-info" (click)="add(address.value); address.value=''">
+        add
+      </button>
+    </ul>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Address</th>
+      <th>Cars total</th>
+      <th>Cars available</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let rentPoint of rentPoints">
+      <td>{{rentPoint.address}}</td>
+      <td>{{rentPoint.carList.length}}</td>
+      <td>{{getAvailableCarsAmount(rentPoint)}}</td>
+      <td><a routerLink="/points/{{rentPoint.id}}"><button class="btn btn-success pull-right" >Rent Point details </button></a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
