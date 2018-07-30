@@ -1,0 +1,15 @@
+<div class="col-md-6">
+  <h3>Rent car: </h3>
+  <div class="container row">
+    <ul>
+      <li>{{car.name}}</li>
+      <li>{{car.number}}</li>
+      <li>{{car.currentPoint}}</li>
+      <li>Renter name: </li>
+      <input class="input-group-text" required #renterName /> <br>
+      <button class="btn btn-info" (click)="add(car.name, car.number ,renterName.value); renterName.value=''">
+        Rent
+      </button>
+    </ul>
+  </div>
+</div>

@@ -15,13 +15,13 @@ export class RentPointService {
   constructor(private http: HttpClient) { }
 
   private rentPointUrl = '//localhost:8080/points';  // URL to web api
-  /** GET heroes from the server */
+  /** GET cars from the server */
   getRentPoints (): Observable<RentPoint[]> {
     return this.http.get<RentPoint[]>(this.rentPointUrl)
       .pipe();
   }
 
-  /** GET hero by id. Will 404 if id not found */
+  /** GET car by id. Will 404 if id not found */
   getRentPoint (id: number): Observable<RentPoint> {
     const url = `${this.rentPointUrl}/${id}`;
     return this.http.get<RentPoint>(url).pipe();
@@ -30,7 +30,7 @@ export class RentPointService {
   updateRentPoint (rentPoint: RentPoint): Observable<any> {
     return this.http.put(`${this.rentPointUrl}/${rentPoint.id}`, rentPoint, httpOptions).pipe();
   }
-  /** POST: add a new hero to the server */
+  /** POST: add a new car to the server */
   addRentPoint (rentPoint: RentPoint): Observable<RentPoint> {
     return this.http.post<RentPoint>(this.rentPointUrl, rentPoint, httpOptions).pipe();
   }

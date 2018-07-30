@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { RentPointsComponent } from './rent-points/rent-points.component';
 import { RentPointDetailsComponent } from './rent-point-details/rent-point-details.component';
+import { RentCarComponent } from './rent-car/rent-car.component';
+import { ReturnCarComponent } from './return-car/return-car.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { RentPointDetailsComponent } from './rent-point-details/rent-point-detai
     IsAvailablePipe,
     CarDetailsComponent,
     RentPointsComponent,
-    RentPointDetailsComponent
+    RentPointDetailsComponent,
+    RentCarComponent,
+    ReturnCarComponent
   ],
   imports: [
     BrowserModule,

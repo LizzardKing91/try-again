@@ -4,6 +4,8 @@ import {RentHistory} from '../rentHistory';
 import {ActivatedRoute} from '@angular/router';
 import {CarService} from '../car.service';
 import {Location} from '@angular/common';
+import {RentPoint} from '../rentPoint';
+import {RentPointService} from '../rent-point.service';
 
 @Component({
   selector: 'app-rent-point-details',
@@ -12,30 +14,30 @@ import {Location} from '@angular/common';
 })
 export class RentPointDetailsComponent implements OnInit {
 
-  @Input() car: Car;
-  @Input() historyList: RentHistory[];
+  @Input() rentPoint: RentPoint;
+  @Input() carList: Car[];
 
   constructor(
     private route: ActivatedRoute,
-    private carService: CarService,
+    private rentPointService: RentPointService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
-    this.getCar();
-    this.getHistory();
+    this.getRentPoint();
+    this.getCars();
   }
 
-  getCar(): void {
+  getRentPoint(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.carService.getCar(id)
-      .subscribe(car => this.car = car);
+    this.rentPointService.getRentPoint(id)
+      .subscribe(rentPoint => this.rentPoint = rentPoint);
   }
-  getHistory(): void {
-    if (this.car.historyList === null) {
-      this.historyList = [];
+  getCars(): void {
+    if (this.rentPoint.carList === null) {
+      this.carList = [];
     } else {
-      this.historyList = this.car.historyList;
+      this.carList = this.rentPoint.carList;
     }
   }
 
@@ -44,11 +46,11 @@ export class RentPointDetailsComponent implements OnInit {
   }
 
   save(): void {
-    this.carService.updateCar(this.car)
+    this.rentPointService.updateRentPoint(this.rentPoint)
       .subscribe(() => this.goBack());
   }
   delete(): void {
-    this.carService.deleteCar(this.car).subscribe(
+    this.rentPointService.deleteRentPoint(this.rentPoint).subscribe(
       () =>  this.goBack()
     );
   }
