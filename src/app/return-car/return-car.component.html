@@ -4,11 +4,11 @@
     <ul>
       <li>{{car.name}}</li>
       <li>{{car.number}}</li>
-      <li>{{car.currentPoint}}</li>
-      <li>{{car.historyList.filter(history => history.)}}</li>
-      <input class="input-group-text" #renterName /> <br>
-      <button class="btn btn-info" (click)="add(car.name, car.number ,renterName.value); renterName.value=''">
-        Rent
+      <li>{{history.renterName}}</li>
+      <li>{{history.startPoint}}</li>
+      <li>{{history.startDate | date}}</li>
+      <button class="btn btn-info">
+        Return
       </button>
     </ul>
   </div>

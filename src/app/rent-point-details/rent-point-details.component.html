@@ -22,7 +22,6 @@
         <th>Car Model</th>
         <th>Car Number</th>
         <th>Available</th>
-        <th>Actions</th>
       </tr>
       </thead>
       <tbody>
@@ -30,8 +29,7 @@
         <td>{{car.name}}</td>
         <td>{{car.number}}</td>
         <td>{{car.available | isAvailable}}</td>
-        <td *ngIf="car.available"><a routerLink="/car/{{car.id}}"><button class="btn btn-success pull-right" >Rent </button></a>Rent</td>
-        <td *ngIf="!car.available"><button class="btn btn-info" (click)="goBack()">Return</button></td>
+        <td *ngIf="car.available"><a routerLink="/car/{{car.id}}"><button class="btn btn-success pull-right" >Rent </button></a></td>
       </tr>
       </tbody>
     </table>

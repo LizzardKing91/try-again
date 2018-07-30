@@ -60,6 +60,15 @@ export class CarService {
     return this.http.post<RentHistory>(url, history, httpOptions).pipe();
   }
 
+  getRentHistoryList(): Observable<RentHistory[]> {
+    return this.http.get<RentHistory []>('//localhost:8080/history');
+  }
+
+  returnCar(history: RentHistory) {
+    const url = `//localhost:8080/cars/rent`;
+    return this.http.post<RentHistory>(url, history, httpOptions).pipe();
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

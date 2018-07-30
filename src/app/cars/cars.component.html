@@ -30,6 +30,7 @@
     <td>{{car.currentPoint}}</td>
     <td>{{car.available | isAvailable}}</td>
     <td><a routerLink="/cars/{{car.id}}"><button class="btn btn-success pull-right" >Car details </button></a></td>
+    <td *ngIf="!car.available"><a routerLink="/car/return/{{car.id}}"><button class="btn btn-success pull-right" >Return </button></a></td>
   </tr>
   </tbody>
 </table>
