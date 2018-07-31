@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'points/:id', component: RentPointDetailsComponent},
   {path: 'points/:id', component: RentPointDetailsComponent},
   {path: 'car/:id', component: RentCarComponent},
-  {path: 'car/return/:id', component: ReturnCarComponent}
+  {path: 'cars/return/:id/:carNumber', component: ReturnCarComponent}
 ];
 
 @NgModule({

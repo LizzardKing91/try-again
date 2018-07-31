@@ -12,8 +12,10 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./return-car.component.css']
 })
 export class ReturnCarComponent implements OnInit {
-  @Input() history: RentHistory;
   @Input() car: Car;
+  @Input() history: RentHistory;
+  @Input() carNumber: string;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +26,8 @@ export class ReturnCarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCar();
-    // this.getHistory(this.car);
-    this.getCurrentHistory(this.car);
+    this.getCarNumber();
+    this.getCurrentHistory(this.carNumber);
   }
 
   getCar(): void {
@@ -33,26 +35,22 @@ export class ReturnCarComponent implements OnInit {
     this.carService.getCar(id)
       .subscribe(car => this.car = car);
   }
-/*  getHistory(car: Car): RentHistory {
-    return this.car.historyList.find(history => history.finalPoint === null);
-  }*/
 
-  getCurrentHistory(car: Car): RentHistory {
-    let currentHistory =
-    this.carService.getRentHistoryList().pipe(map(history => {
-      const fl = history.filter(h => h.carNumber === car.number).filter(h => h.finalPoint === null);
-      currentHistory = new RentHistory (fl[0].carName, fl[0].carNumber, fl[0].renterName, fl[0].finalPoint);
-      // return (fl.length > 0) ? currentHistory : null;
-      return currentHistory;
-    }));
-    return currentHistory;
+  getCarNumber(): void {
+    this.carNumber = this.route.snapshot.paramMap.get('carNumber');
   }
 
-  add(carName: string, carNumber: string, renterName: string): void {
-    renterName = renterName.trim();
-    if (!renterName) { return; }
-    const history = new RentHistory(carName, carNumber, renterName, null);
-    this.carService.rentCar(history).subscribe(car => this.getCar());
+  getCurrentHistory(carNumber: string): void {
+    this.carService.getCurrentHistory(carNumber).subscribe(history => this.history = history);
+    console.log(this.history.renterName);
+    console.log(this.history.startDate);
+  }
+
+  add(carName: string, carNumber: string, renterName: string, finalPoint: string): void {
+    finalPoint = finalPoint.trim();
+    if (!finalPoint) { return; }
+    const history = new RentHistory(carName, carNumber, renterName, finalPoint);
+    this.carService.returnCar(history, this.car.id).subscribe(car => this.getCar());
     this.goBack();
   }
 

@@ -7,7 +7,9 @@
       <li>{{history.renterName}}</li>
       <li>{{history.startPoint}}</li>
       <li>{{history.startDate | date}}</li>
-      <button class="btn btn-info">
+      <li>Final point: </li>
+      <input class="input-group-text" required #finalPoint /> <br>
+      <button class="btn btn-info" (onClick)="add(car.name, carNumber, history.renterName ,finalPoint.value); finalPoint.value=''">
         Return
       </button>
     </ul>

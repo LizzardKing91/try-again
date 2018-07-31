@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Car} from './car';
 import {Observable, of} from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
-import { MessageService } from './message.service';
-import {promise} from 'selenium-webdriver';
+import {MessageService} from './message.service';
 import {RentHistory} from './rentHistory';
 
 const httpOptions = {
@@ -33,7 +32,7 @@ export class CarService {
     const url = `${this.carsUrl}/${id}`;
     return this.http.get<Car>(url).pipe(
       tap(_ => this.log(`fetched car id=${id}`)),
-      catchError(this.handleError<Car>(`getCar id=${id}`))
+      catchError(this.handleError<Car>(`getCar id=${id}`)),
     );
   }
 
@@ -61,12 +60,16 @@ export class CarService {
   }
 
   getRentHistoryList(): Observable<RentHistory[]> {
-    return this.http.get<RentHistory []>('//localhost:8080/history');
+    return this.http.get<RentHistory []>(`//localhost:8080/history`);
   }
 
-  returnCar(history: RentHistory) {
-    const url = `//localhost:8080/cars/rent`;
-    return this.http.post<RentHistory>(url, history, httpOptions).pipe();
+  getCurrentHistory(carNumber: string): Observable<RentHistory> {
+    return this.http.get<RentHistory>(`${this.carsUrl}/return/${carNumber}`);
+  }
+
+  returnCar(history: RentHistory, id: number) {
+    const url = `//localhost:8080/cars/return/${id}`;
+    return this.http.put<RentHistory>(url, history, httpOptions).pipe();
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
