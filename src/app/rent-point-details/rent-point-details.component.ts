@@ -1,8 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Car} from '../car';
-import {RentHistory} from '../rentHistory';
 import {ActivatedRoute} from '@angular/router';
-import {CarService} from '../car.service';
 import {Location} from '@angular/common';
 import {RentPoint} from '../rentPoint';
 import {RentPointService} from '../rent-point.service';
@@ -28,16 +26,17 @@ export class RentPointDetailsComponent implements OnInit {
     this.getCars();
   }
 
-  getRentPoint(): void {
+  getRentPoint(): Car[] {
     const id = +this.route.snapshot.paramMap.get('id');
     this.rentPointService.getRentPoint(id)
       .subscribe(rentPoint => this.rentPoint = rentPoint);
+    return this.rentPoint.carList;
   }
   getCars(): void {
     if (this.rentPoint.carList === null) {
       this.carList = [];
     } else {
-      this.carList = this.rentPoint.carList;
+      this.carList = this.getRentPoint();
     }
   }
 

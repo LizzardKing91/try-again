@@ -9,7 +9,7 @@
       <li>{{history.startDate | date}}</li>
       <li>Final point: </li>
       <input class="input-group-text" required #finalPoint /> <br>
-      <button class="btn btn-info" (onClick)="add(car.name, carNumber, history.renterName ,finalPoint.value); finalPoint.value=''">
+      <button class="btn btn-info" (click)="add(car.name, car.number, history.renterName ,finalPoint.value); finalPoint.value=''">
         Return
       </button>
     </ul>

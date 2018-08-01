@@ -71,6 +71,14 @@ export class CarService {
     const url = `//localhost:8080/cars/return/${id}`;
     return this.http.put<RentHistory>(url, history, httpOptions).pipe();
   }
+  getCarModels(cars: Car[]): string[] {
+    let models: string[];
+    models = cars.map(car => car.name);
+    const unique = (value, index, self) => {
+      return self.indexOf(value) === index;
+    };
+    return models.filter(unique);
+  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

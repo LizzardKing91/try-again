@@ -35,7 +35,7 @@ export class CarDetailsComponent implements OnInit {
     if (this.car.historyList === null) {
       this.historyList = [];
     } else {
-      this.historyList = this.car.historyList;
+      this.historyList = this.car.historyList.sort();
     }
   }
 

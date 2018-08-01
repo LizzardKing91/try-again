@@ -13,6 +13,7 @@ import { RentPointsComponent } from './rent-points/rent-points.component';
 import { RentPointDetailsComponent } from './rent-point-details/rent-point-details.component';
 import { RentCarComponent } from './rent-car/rent-car.component';
 import { ReturnCarComponent } from './return-car/return-car.component';
+import { StatisticComponent } from './statistic/statistic.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReturnCarComponent } from './return-car/return-car.component';
     RentPointsComponent,
     RentPointDetailsComponent,
     RentCarComponent,
-    ReturnCarComponent
+    ReturnCarComponent,
+    StatisticComponent
   ],
   imports: [
     BrowserModule,
