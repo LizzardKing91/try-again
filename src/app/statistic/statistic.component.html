@@ -1,7 +1,9 @@
 <div>
   <div *ngFor="let address of addresses">
     <div *ngFor="let model of models">
-      <mat-chip-list></mat-chip-list>
+      <ul>
+        <li>{{model.toUpperCase()}}</li>
+      </ul>
     </div>
   </div>
 </div>

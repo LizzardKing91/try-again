@@ -23,21 +23,13 @@ export class RentPointDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRentPoint();
-    this.getCars();
   }
 
-  getRentPoint(): Car[] {
+  getRentPoint(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.rentPointService.getRentPoint(id)
       .subscribe(rentPoint => this.rentPoint = rentPoint);
-    return this.rentPoint.carList;
-  }
-  getCars(): void {
-    if (this.rentPoint.carList === null) {
-      this.carList = [];
-    } else {
-      this.carList = this.getRentPoint();
-    }
+    this.carList = this.rentPoint.carList;
   }
 
   goBack(): void {
